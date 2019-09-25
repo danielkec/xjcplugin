@@ -1,0 +1,50 @@
+<?xml version="1.0" standalone="yes"?>
+<!--
+
+    Copyright (c) 2004, 2019 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+-->
+
+<project basedir="." default="run">
+<!--    <property name="jaxb.sample.libs" value="/home/kec/idp/ora/eclipse-ee4j/jaxb-ri/jaxb-ri/samples/src/main/lib"/>-->
+    <property name="m2" value="${user.home}/.m2/repository"/>
+
+    <!-- WORK -->
+    <!--    <property name="jaxb.version" value="2.1.2"/>-->
+    <!-- DOESN'T WORK -->
+    <property name="jaxb.version" value="2.1.6"/>
+    <path id="classpath">
+        <pathelement path="src/main"/>
+        <pathelement path="target/classes"/>
+<!--        <pathelement path="resources/schemas"/>-->
+<!--        <fileset dir="${jaxb.sample.libs}" includes="*.jar"/>-->
+        <fileset dir="${m2}/com/sun/xml/bind/jaxb-xjc/${jaxb.version}" includes="*.jar"/>
+        <fileset dir="${m2}/com/sun/xml/bind/jaxb-impl/${jaxb.version}" includes="*.jar"/>
+        <fileset dir="target" includes="*.jar"/>
+    </path>
+    <echo message="JAXB version ${jaxb.version}"/>
+    <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+        <classpath refid="classpath"/>
+    </taskdef>
+
+    <!--compile Java source files-->
+    <target name="run" description="Compile all Java source files">
+        <echo message="Compiling the schema..."/>
+        <mkdir dir="target/generated-sources"/>
+        <xjc schema="src/main/resources/schemas/test.xsd" destdir="target/generated-sources">
+            <arg value="-Xkec-hello-world"/>
+            <produces dir="target/generated-sources" includes="**/*.java"/>
+        </xjc>
+    </target>
+
+    <target name="clean">
+        <delete dir="target"/>
+    </target>
+</project>
+
