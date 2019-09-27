@@ -10,7 +10,9 @@
     <name>XJC Testing plugin</name>
 
     <properties>
-        <jaxb.version>2.1.6</jaxb.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <jaxb.version>2.2.2</jaxb.version>
     </properties>
 
     <dependencies>

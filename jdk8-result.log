@@ -1,0 +1,64 @@
+
+JAXB 2.0
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.0.1
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.0.2
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.0.3
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.0.4
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.0.5
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.1.1
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.1.2
+XJCTask .... OK
+XJC2Task ... OK
+JAXB 2.1.3
+XJCTask ... NOK: unrecognized parameter -Xkec-hello-world
+XJC2Task ... OK
+JAXB 2.1.4
+XJCTask ... NOK: unrecognized parameter -Xkec-hello-world
+XJC2Task ... OK
+JAXB 2.1.5
+XJCTask ... NOK: unrecognized parameter -Xkec-hello-world
+XJC2Task ... OK
+JAXB 2.1.6
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.1.7
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.1.8
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.1.9
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.1.10
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.1.11
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.1.12
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.2
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.2.2
+XJCTask ... NOK: java.util.ServiceConfigurationError: com.sun.tools.xjc.Plugin: Provider cz.kec.ora.xjc.HelloWorldPlugin not a subtype
+XJC2Task ... OK
+JAXB 2.3.2
+XJCTask ... NOK: java.lang.IllegalArgumentException: can't parse argument number: version
+XJC2Task ... NOK: java.lang.IllegalArgumentException: can't parse argument number: version

@@ -12,30 +12,32 @@
 -->
 
 <project basedir="." default="run">
-<!--    <property name="jaxb.sample.libs" value="/home/kec/idp/ora/eclipse-ee4j/jaxb-ri/jaxb-ri/samples/src/main/lib"/>-->
+    <!--    <property name="jaxb.sample.libs" value="/home/kec/idp/ora/eclipse-ee4j/jaxb-ri/jaxb-ri/samples/src/main/lib"/>-->
     <property name="m2" value="${user.home}/.m2/repository"/>
-
-    <!-- WORK -->
-    <!--    <property name="jaxb.version" value="2.1.2"/>-->
-    <!-- DOESN'T WORK -->
-    <property name="jaxb.version" value="2.1.6"/>
+    <property name="task.class" value="com.sun.tools.xjc.XJCTask"/>
+    <property name="jaxb.version" value="2.3.1"/>
     <path id="classpath">
         <pathelement path="src/main"/>
         <pathelement path="target/classes"/>
-<!--        <pathelement path="resources/schemas"/>-->
-<!--        <fileset dir="${jaxb.sample.libs}" includes="*.jar"/>-->
+        <!--        <pathelement path="resources/schemas"/>-->
+        <!--        <fileset dir="${jaxb.sample.libs}" includes="*.jar"/>-->
+
         <fileset dir="${m2}/com/sun/xml/bind/jaxb-xjc/${jaxb.version}" includes="*.jar"/>
-        <fileset dir="${m2}/com/sun/xml/bind/jaxb-impl/${jaxb.version}" includes="*.jar"/>
+        <fileset erroronmissingdir="false" dir="${m2}/com/sun/xml/bind/jaxb-impl/${jaxb.version}" includes="*.jar"/>
+        <fileset dir="${m2}/javax/xml/bind/jaxb-api/2.3.1" includes="*.jar"/>
+        <fileset erroronmissingdir="false" dir="${m2}/jakarta/activation/jakarta.activation-api/1.2.1" includes="*.jar"/>
+        <fileset erroronmissingdir="false" dir="${m2}/com/sun/xml/bind/jaxb-core/2.3.0.1" includes="*.jar"/>
         <fileset dir="target" includes="*.jar"/>
     </path>
+    <echo message="Java version ${ant.java.version}"/>
     <echo message="JAXB version ${jaxb.version}"/>
-    <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+    <echo message="Ant task definition: ${task.class}"/>
+    <taskdef name="xjc" classname="${task.class}">
         <classpath refid="classpath"/>
     </taskdef>
 
     <!--compile Java source files-->
     <target name="run" description="Compile all Java source files">
-        <echo message="Compiling the schema..."/>
         <mkdir dir="target/generated-sources"/>
         <xjc schema="src/main/resources/schemas/test.xsd" destdir="target/generated-sources">
             <arg value="-Xkec-hello-world"/>
@@ -44,7 +46,7 @@
     </target>
 
     <target name="clean">
-        <delete dir="target"/>
+        <delete dir="target/generated-sources"/>
     </target>
 </project>
 
