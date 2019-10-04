@@ -21,6 +21,10 @@ public class HelloWorldPlugin extends Plugin {
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>I have been loaded!!");
     }
 
+    public static void main(String[] args) {
+        System.out.println(ModuleNameResolver.resolve());
+    }
+
     public String getOptionName() {
         return "Xkec-hello-world";
     }
@@ -30,7 +34,16 @@ public class HelloWorldPlugin extends Plugin {
     }
 
     public boolean run(Outline outline, Options options, ErrorHandler errorHandler) {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>> HELLO WORLD FROM XJC PLUGIN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        //System.out.printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>> HELLO WORLD MODULE='%s'", getModuleName(this.getClass()));
+        System.out.printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>> HELLO WORLD MODULE='%s'", ModuleNameResolver.resolve());//getModuleName(this.getClass()));
         return true;
+    }
+
+    private String getModuleName(Class<?> clazz) {
+        ModuleAccessor moduleAccessor = ModuleNameResolver.generate();
+        if (moduleAccessor.isModuleNamed(clazz)) {
+            return moduleAccessor.getModuleName(clazz);
+        }
+        return "unnamed module";
     }
 }

@@ -15,16 +15,16 @@
     <!--    <property name="jaxb.sample.libs" value="/home/kec/idp/ora/eclipse-ee4j/jaxb-ri/jaxb-ri/samples/src/main/lib"/>-->
     <property name="m2" value="${user.home}/.m2/repository"/>
     <property name="task.class" value="com.sun.tools.xjc.XJCTask"/>
-    <property name="jaxb.version" value="2.3.1"/>
+    <property name="jaxb.version" value="2.3.2"/>
     <path id="classpath">
-        <pathelement path="src/main"/>
-        <pathelement path="target/classes"/>
+<!--        <pathelement path="src/main"/>-->
+<!--        <pathelement path="target/classes"/>-->
         <!--        <pathelement path="resources/schemas"/>-->
         <!--        <fileset dir="${jaxb.sample.libs}" includes="*.jar"/>-->
 
-        <fileset dir="${m2}/com/sun/xml/bind/jaxb-xjc/${jaxb.version}" includes="*.jar"/>
-        <fileset erroronmissingdir="false" dir="${m2}/com/sun/xml/bind/jaxb-impl/${jaxb.version}" includes="*.jar"/>
-        <fileset dir="${m2}/javax/xml/bind/jaxb-api/2.3.1" includes="*.jar"/>
+        <fileset dir="${m2}/com/sun/xml/bind/jaxb-xjc/${jaxb.version}" includes="*${jaxb.version}.jar"/>
+        <fileset erroronmissingdir="false" dir="${m2}/com/sun/xml/bind/jaxb-impl/${jaxb.version}" includes="*${jaxb.version}.jar"/>
+        <fileset dir="${m2}/javax/xml/bind/jaxb-api/2.4.0-b180830.0359" includes="*.jar"/>
         <fileset erroronmissingdir="false" dir="${m2}/jakarta/activation/jakarta.activation-api/1.2.1" includes="*.jar"/>
         <fileset erroronmissingdir="false" dir="${m2}/com/sun/xml/bind/jaxb-core/2.3.0.1" includes="*.jar"/>
         <fileset dir="target" includes="*.jar"/>
@@ -45,8 +45,17 @@
         </xjc>
     </target>
 
+    <target name="runMain">
+        <mkdir dir="target/generated-sources"/>
+        <java classname="cz.kec.ora.xjc.HelloWorldPlugin" module="cz.kec.ora.xjc" fork="true">
+<!--            <classpath refid="classpath"/>-->
+            <arg value="--patch-module jaxb.api=/home/kec/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar"/>
+            <modulepath refid="classpath"/>
+        </java>
+    </target>
+
     <target name="clean">
         <delete dir="target/generated-sources"/>
     </target>
-</project>
+</project>  
 
